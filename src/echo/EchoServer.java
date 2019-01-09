@@ -25,17 +25,18 @@ public class EchoServer {
 			log("binding " + localhostAddress + ":" + PORT);
 
 			// 3.accept
-			Socket socket = serverSocket.accept(); // Blocking
-			Thread thread = new EchoServerReceiveThread(socket);
-			thread.start();
-
+			while (true) {
+				Socket socket = serverSocket.accept(); // Blocking
+				Thread thread = new EchoServerReceiveThread(socket);
+				thread.start();
+			}
 		} catch (IOException e) {
-			System.out.println("error : "+e);
+			System.out.println("error : " + e);
 		}
 
 	}
 
 	public static void log(String log) {
-		System.out.println("[server#"+ Thread.currentThread().getId()+"] " + log);
+		System.out.println("[server#" + Thread.currentThread().getId() + "] " + log);
 	}
 }
