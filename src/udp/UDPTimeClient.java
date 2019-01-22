@@ -23,6 +23,7 @@ public class UDPTimeClient {
 
 			while (true) {
 				// 3.사용자 입력 받음
+				System.out.println(">>");
 				String message = sc.nextLine();
 
 				if ("quit".equals(message)) {
